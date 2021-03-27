@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC   -Wl,-rpath-link,  -Wl,-O3 -Wl,--gc-sections -shared  -o TSuite.so CMakeFiles/TSuite.dir/Reference_pt.cpp.o   -L/usr/lib/llvm-10/lib  -Wl,-rpath,"\$ORIGIN/../lib:/usr/lib/llvm-10/lib" /usr/lib/llvm-10/lib/libLLVM-10.so.1 /usr/local/lib/libPointsToDump.so 
