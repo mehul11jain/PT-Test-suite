@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.4)
+project(PTEval)
+
+# we need LLVM_HOME in order not automatically set LLVM_DIR
+if(NOT DEFINED ENV{LLVM_HOME})
+    message(FATAL_ERROR "$LLVM_HOME is not defined")
+else ()
+    set(ENV{LLVM_DIR} $ENV{LLVM_HOME}/lib/cmake/llvm)
+endif()
+
+find_package(nlohmann_json REQUIRED 3.9.1)
+find_package(LLVM REQUIRED CONFIG)
+add_definitions(${LLVM_DEFINITIONS})
+include_directories(${LLVM_INCLUDE_DIRS})
+link_directories(${LLVM_LIBRARY_DIRS})
+list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+include(AddLLVM)
+
+include_directories(./libEvaluate/include)
+add_subdirectory(libEvaluate)
