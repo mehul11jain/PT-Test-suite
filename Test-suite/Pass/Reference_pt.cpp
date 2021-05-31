@@ -8,8 +8,11 @@
 #include "llvm/Support/Casting.h"
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
+#include "llvm/IR/DebugInfoMetadata.h"
+#include "llvm/IR/Metadata.h"
 #include "nlohmann/json.hpp"
-#include "PointsToDump/PTWriter.h"
+#include "PointsToDump/FS_PTWriter.h"
+
 
 #define RED "\033[1;91m"
 #define GREEN "\033[1;92m"
@@ -26,8 +29,11 @@ namespace
 		static char ID;
 		RefPass() : ModulePass(ID) {}
 		bool runOnModule(Module &M) override
-		{               
-            PTDump::PTWriter* pt = new PTDump:: PTWriter(PTDump::AnalysisType::FlowSensitive, M.getModuleIdentifier(), "../../Reference_pt_Files/");
+		{ 
+            std::string fileName;  
+            int lineNo;
+            errs() << "Testing\n";
+            PTDump::FS_PTWriter* pt = new PTDump::FS_PTWriter(PTDump::AnalysisType::FlowSensitive, M.getModuleIdentifier(), "../FSRef_pt_Files/");            
 			for(Function& F : M.functions())
             {
                for(BasicBlock& BB : F)
@@ -37,14 +43,37 @@ namespace
                        if(isa<CallInst>(&I))
                        {
                            CallInst* CI = dyn_cast<CallInst>(&I);                           
+                           errs() << I << "\n";
                            if(CI->getCalledFunction()->getName().contains("PointsTo"))
                            {
                                 Value* pointer = dyn_cast<Instruction>(CI->getArgOperand(0))->getOperand(0);
                                 Value* pointee = dyn_cast<Instruction>(CI->getArgOperand(1))->getOperand(0);                                
                                 if(CI->getCalledFunction()->getName().contains("Must"))
-                                    pt->AddPointsToinfoAt(&F , &BB , &I, pointer, pointee, PTDump::MustPointee);
+                                {
+                                    if (I.hasMetadata())
+                                    {
+                                        MDNode *node = I.getMetadata("dbg");
+                                        if (DILocation *loc = dyn_cast<DILocation>(node))
+                                        {
+                                            lineNo = loc->getLine();
+                                            fileName = loc->getFilename();
+                                        }
+                                    }
+                                    pt->WritePointsToinfoAt(&F, lineNo ,fileName, pointer, pointee,PTDump::MustPointee);
+                                }
                                 else if(CI->getCalledFunction()->getName().contains("May"))
-                                    pt->AddPointsToinfoAt(&F , &BB , &I, pointer, pointee, PTDump::MayPointee);
+                                {
+                                    if (I.hasMetadata())
+                                    {
+                                        MDNode *node = I.getMetadata("dbg");
+                                        if (DILocation *loc = dyn_cast<DILocation>(node))
+                                        {
+                                            lineNo = loc->getLine();
+                                            fileName = loc->getFilename();
+                                        }
+                                    }
+                                    pt->WritePointsToinfoAt(&F, lineNo ,fileName, pointer, pointee,PTDump::MayPointee);
+                                }
                            }                           
                        }
                    }

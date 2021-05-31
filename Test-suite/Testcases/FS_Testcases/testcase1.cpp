@@ -8,7 +8,7 @@ int main(){
     a = b = &c;
     if(a)
     {
-        p = &a;
+        p = &a;        
         MustPointsTo(p,a);
         DoesNotPointsTo(p,b);
 
@@ -43,7 +43,7 @@ int main(){
 	n = *b;
 	MustPointsTo(n,d);
 	
-	*p=&n;
+	*p = &n;
 	MayPointsTo(a,n);
 	MayPointsTo(b,n);
     MayPointsTo(a,c);

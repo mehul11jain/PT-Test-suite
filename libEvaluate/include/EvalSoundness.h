@@ -11,11 +11,17 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "nlohmann/json.hpp"
+#include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <map>
+#include <set>
 
-#define RED "\033[1;91m"
-#define GREEN "\033[1;92m"
-#define CYAN "\033[1;36m"
-#define NC "\033[0m"
+#define CYANB "\033[1;46m"
+#define REDT "\033[1;91m"
+#define GREENT "\033[1;92m"
+#define YELLOWT "\033[1;93m"
+#define RST "\033[0;m"
 
 using json = nlohmann::json;
 
@@ -23,11 +29,15 @@ namespace PointsToEval
 {
     class EvalSoundness
     {
-        std::string Path_To_file;
-        json reader;        
-        public :        
-            EvalSoundness();
-            EvalSoundness(std::string);
+        int testcaseIndex;
+        json usr_reader;       
+        json ref_reader; 
+        std::string Path_To_user_file;
+        std::string Path_To_Ref_file;
+        std::map<std::string, std::map<int, std::set<std::pair<std::string, std::pair<std::string, std::string>>>>> PTInf;
+        std::map<std::pair<int, std::pair<std::string, std::string>>, std::pair<std::string, std::string>> EvalRes;
+        public :                    
+            EvalSoundness(std::string, std::string, int);
             ~EvalSoundness();
             void PrintStats();
             bool CheckFISTestCase();

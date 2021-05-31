@@ -2,175 +2,160 @@
     "ContextSensitivePointsToInfo": {},
     "FlowInsensitivePointsToInfo": {},
     "FlowSensitivePointsToInfo": {
-        "Procedure": [
+        "File": [
             {
-                "BasicBlocks": [
+                "Procedure": [
                     {
-                        "BBid": "bb1",
-                        "Instructions": [
+                        "FunctionID": "main",
+                        "ProgramPoints": [
                             {
-                                "Instructionid": 3,
+                                "LineNo": 10,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "b",
-                                                "type": "i32**"
+                                                "type": "i32*"
                                             }
                                         ],
                                         "name": "q",
-                                        "type": "i32***"
+                                        "type": "i32**"
                                     }
                                 ]
                             },
                             {
-                                "Instructionid": 7,
+                                "LineNo": 12,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "Must",
                                                 "name": "a",
-                                                "type": "i32**"
+                                                "type": "i32*"
                                             }
                                         ],
                                         "name": "r",
-                                        "type": "i32***"
+                                        "type": "i32**"
                                     }
                                 ]
                             },
                             {
-                                "Instructionid": 12,
+                                "LineNo": 15,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "m",
-                                                "type": "i32*"
+                                                "type": "i32"
                                             }
                                         ],
                                         "name": "b",
-                                        "type": "i32**"
+                                        "type": "i32*"
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        "BBid": "bb11",
-                        "Instructions": [
+                            },
                             {
-                                "Instructionid": 4,
+                                "LineNo": 19,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "Must",
                                                 "name": "b",
-                                                "type": "i32**"
+                                                "type": "i32*"
                                             }
                                         ],
                                         "name": "q",
-                                        "type": "i32***"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "BBid": "bb15",
-                        "Instructions": [
-                            {
-                                "Instructionid": 3,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "b",
-                                                "type": "i32**"
-                                            }
-                                        ],
-                                        "name": "q",
-                                        "type": "i32***"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "BBid": "bb19",
-                        "Instructions": [
-                            {
-                                "Instructionid": 3,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "b",
-                                                "type": "i32**"
-                                            }
-                                        ],
-                                        "name": "q",
-                                        "type": "i32***"
+                                        "type": "i32**"
                                     }
                                 ]
                             },
                             {
-                                "Instructionid": 6,
+                                "LineNo": 25,
+                                "PointsToSet": [
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
+                                    }
+                                ]
+                            },
+                            {
+                                "LineNo": 27,
+                                "PointsToSet": [
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
+                                    }
+                                ]
+                            },
+                            {
+                                "LineNo": 28,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "m",
-                                                "type": "i32*"
+                                                "type": "i32"
                                             }
                                         ],
                                         "name": "b",
-                                        "type": "i32**"
+                                        "type": "i32*"
                                     }
                                 ]
                             },
                             {
-                                "Instructionid": 9,
+                                "LineNo": 29,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "a",
-                                                "type": "i32**"
+                                                "type": "i32*"
                                             }
                                         ],
                                         "name": "r",
-                                        "type": "i32***"
+                                        "type": "i32**"
                                     }
                                 ]
                             },
                             {
-                                "Instructionid": 16,
+                                "LineNo": 32,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "Must",
                                                 "name": "e",
-                                                "type": "i32**"
+                                                "type": "i32*"
                                             }
                                         ],
                                         "name": "q",
-                                        "type": "i32***"
+                                        "type": "i32**"
                                     }
                                 ]
                             }
                         ]
                     }
                 ],
-                "Functionid": "main"
+                "name": "testcase6.cpp"
             }
         ]
     }
