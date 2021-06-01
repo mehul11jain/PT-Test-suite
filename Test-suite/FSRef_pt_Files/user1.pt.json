@@ -15,7 +15,7 @@
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
-                                                "name": "b",
+                                                "name": "a",
                                                 "type": "i32**"
                                             }
                                         ],
@@ -30,7 +30,7 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "c",
                                                 "type": "i32*"
                                             }
@@ -46,7 +46,7 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "b",
                                                 "type": "i32**"
                                             }
@@ -62,7 +62,7 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "c",
                                                 "type": "i32*"
                                             }
@@ -110,7 +110,7 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "c",
                                                 "type": "i32*"
                                             }
@@ -126,7 +126,7 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "d",
                                                 "type": "i32"
                                             }
@@ -142,7 +142,7 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "d",
                                                 "type": "i32"
                                             }

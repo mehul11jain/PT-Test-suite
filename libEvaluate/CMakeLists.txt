@@ -1,7 +1,6 @@
 include_directories(./include)
 add_library(PTEval SHARED  
-    src/EvalSoundness.cpp
-    src/EvalPrecision.cpp
+    src/EvaluateAnalysis.cpp    
 )
 set_target_properties(PTEval PROPERTIES
     COMPILE_FLAGS "-std=c++14 -fno-rtti -g"
