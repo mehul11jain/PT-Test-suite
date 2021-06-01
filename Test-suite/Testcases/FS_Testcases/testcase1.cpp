@@ -5,40 +5,47 @@ int ***p,**q, **a, **b, *c, *m,*n,d;
 int main(){
 
     m = &d;
+    MustPointsTo(m,d);
+
     a = b = &c;
+    MustPointsTo(a,c);
+    MustPointsTo(b,c);
+
     if(a)
     {
         p = &a;        
         MustPointsTo(p,a);
-        DoesNotPointsTo(p,b);
+        //DoesNotPointsTo(p,b);
 
         q = &c;
         MustPointsTo(q,c);
-        DoesNotPointsTo(q,m);
-        DoesNotPointsTo(q,n);
+        //DoesNotPointsTo(q,m);
+        //DoesNotPointsTo(q,n);
     }
     else
     {
         p = &b;
         MustPointsTo(p,b);
-        DoesNotPointsTo(p,a);
+        //DoesNotPointsTo(p,a);
 
         q = &c;
         MustPointsTo(q,c);
-        DoesNotPointsTo(q,m);
-        DoesNotPointsTo(q,n);
+        //DoesNotPointsTo(q,m);
+        //DoesNotPointsTo(q,n);
 
     }
 
-    MayPointsTo(p,a);
-    MayPointsTo(p,b);
-    MustPointsTo(q,c);
-    DoesNotPointsTo(q,m);
-    DoesNotPointsTo(q,n);
 
 
 	*a = m;
-    MustPointsTo(c,d);
+    MustPointsTo(c,d);	
+    MayPointsTo(p,a);
+    MayPointsTo(p,b);
+    MustPointsTo(q,c);
+    //DoesNotPointsTo(q,m);
+    //DoesNotPointsTo(q,n);
+
+	
 
 	n = *b;
 	MustPointsTo(n,d);
@@ -48,7 +55,7 @@ int main(){
 	MayPointsTo(b,n);
     MayPointsTo(a,c);
 	MayPointsTo(b,c);
-    DoesNotPointsTo(a,m);
-    DoesNotPointsTo(b,m);
+    //DoesNotPointsTo(a,m);
+    //DoesNotPointsTo(b,m);
 }
 

@@ -7,8 +7,10 @@ int main()
 {
     do
     {
-        MayPointsTo(q,b);
         r = &a;
+        //info from exit of while loop:
+        MayPointsTo(q,b);
+        //info from the statement r=&a
         MustPointsTo(r,a);
 
         *q = &m;
@@ -22,12 +24,23 @@ int main()
         {
             break;
         }
-        MayPointsTo(q,b);
+        //MayPointsTo(q,b); checked already at r=&a
     } while (1);
+    
+    //info from exit of while loop:
+//    MayPointsTo(q,b);
+//    MayPointsTo(b,m);
+//    MayPointsTo(r,a);
+
+    e = *p;
+	//no info about p exists so the above statement doesnt produce anything??
+	//from the exit of while loop, we have:
     MayPointsTo(q,b);
     MayPointsTo(b,m);
     MayPointsTo(r,a);
-    e = *p;
+	
+	
+	   
     q = &e;
     MustPointsTo(q,e);
 }

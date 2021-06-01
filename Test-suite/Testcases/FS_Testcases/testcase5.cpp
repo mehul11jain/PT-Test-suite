@@ -8,30 +8,30 @@ int main()
 
     int e;
     p = &x;
-    q = &y;
     MustPointsTo(p,x);
+    q = &y;
     MustPointsTo(q,y);
     d = 40;
 
     if (b)
     {
         *q = &a;
-        x = &b;
         MustPointsTo(y,a);
+        x = &b;
         MustPointsTo(x,b);
     }
     else
     {
         *p = &a;
-        y = &b;
         MustPointsTo(x,a);
+        y = &b;
         MustPointsTo(y,b);
     }
-
-    MayPointsTo(x,a);
-    MayPointsTo(x,b);
-    MayPointsTo(y,a);
-    MayPointsTo(y,b);
+// info from exit of if-else block
+//    MayPointsTo(x,a);
+//    MayPointsTo(x,b);
+//    MayPointsTo(y,a);
+//    MayPointsTo(y,b);
     
     x = y;
     MayPointsTo(x,a);

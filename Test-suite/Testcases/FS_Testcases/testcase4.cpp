@@ -3,10 +3,10 @@
 int *x, *y, *w, **p, **q, a, b, c;
 int main(){
     p = &x;
-	x = &a;
-
 	MustPointsTo(p,x);
+	x = &a;
 	MustPointsTo(x,a);
+
 
 	switch(a){
 		case 1:
@@ -28,15 +28,20 @@ int main(){
 			MustPointsTo(y,b);
 			break;
 	}
-	MustPointsTo(p,x);
-	MayPointsTo(x,a);
-	MayPointsTo(x,b);
-	MayPointsTo(x,c);
-	MayPointsTo(y,a);
-	MayPointsTo(y,b);
+	// info available at the exit of above switch:
+//	MustPointsTo(p,x);
+//	MayPointsTo(x,a);
+//	MayPointsTo(x,b);
+//	MayPointsTo(x,c);
+//	MayPointsTo(y,a);
+//	MayPointsTo(y,b);
+	
 	*p = w;
-	//cannot say anything about points to info of x MustAlias(x,w) exists though.
+	//cannot say anything about points to info of x. MustAlias(x,w) exists though.
 	MayPointsTo(y,a);
 	MayPointsTo(y,b);
-    // **p = 10;	
+	
+	//info from above switch:
+	MustPointsTo(p,x);
+ 
 }
