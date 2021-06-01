@@ -4,9 +4,9 @@
 int **p, **q, **r, *x, *y, *z ,a ,b, c;
 int main(){
     p = &x;
-    MustPointsTo(p,x);
-    DoesNotPointsTo(p,y);
-    DoesNotPointsTo(p,z);
+    MustPointsTo(p,x);    
+    // DoesNotPointsTo(p,y);
+    // DoesNotPointsTo(p,z);
     
 
 
@@ -15,11 +15,12 @@ int main(){
         *p = &b;
         MayPointsTo(p,x);
         MayPointsTo(p,y);
-        DoesNotPointsTo(p,z);
+        // DoesNotPointsTo(p,z);
         MayPointsTo(q,x);
         
         MayPointsTo(x,b);
         MayPointsTo(y,b);
+        MayPointsTo(y,a);
      
         while(b > 0){
         //below info is obtained by taking meet of values obtained from end of loop and from the entry of this loop.
@@ -52,8 +53,7 @@ int main(){
         
         
         q = &x;
-        MustPointsTo(q,x);
-        p = r;
+        MustPointsTo(q,x);        
 		//r points to nothing here!
 
         a--;
@@ -63,20 +63,28 @@ int main(){
     	//info from the end of while loop:
 		//        MayPointsTo(p,x);
 		//        MayPointsTo(q,x);
-        *p = *q;
+        *p = &c;
         MayPointsTo(p,x);
-        MayPointsTo(q,x);
-        //How to get info here of the statement *p=*q??
+        MayPointsTo(p,y);
+        MayPointsTo(x,a);
+        MayPointsTo(x,b);
+        MayPointsTo(x,c);        
+        MayPointsTo(y,a);
+        MayPointsTo(y,b);
+        MayPointsTo(y,c);                
 
     }   
     else{
     	//info from the end of while loop:
 		//        MayPointsTo(p,x);
 		//        MayPointsTo(q,x);
-        *q = &a;
+        *p = &b;
         MayPointsTo(p,x);
-        MayPointsTo(q,x);
-        MayPointsTo(x,a);
+        MayPointsTo(p,y);        
+        MayPointsTo(x,a);        
+        MayPointsTo(x,b);
+        MayPointsTo(y,a);
+        MayPointsTo(y,b);
     }
 
 	// Info at the exit of above block:
@@ -87,7 +95,10 @@ int main(){
     x = &a;
     //do we need to check the following 2??
     MayPointsTo(p,x);
-    MayPointsTo(q,x);
+    MayPointsTo(p,y);    
+    MayPointsTo(y,c);
+    MayPointsTo(y,b);
+    MayPointsTo(y,a);
     MustPointsTo(x,a);
     
     y = &b;

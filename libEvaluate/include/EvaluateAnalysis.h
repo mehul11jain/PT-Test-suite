@@ -37,6 +37,9 @@ namespace PointsToEval
         std::string Path_To_Ref_file;
         std::map<std::string, std::map<int, std::set<std::pair<std::string, std::pair<std::string, std::string>>>>> PTInf;
         std::map<std::pair<int, std::pair<std::string, std::string>>, std::pair<std::string, std::string>> EvalRes;
+        
+        std::map<std::pair<int, std::string>, std::set<std::pair<std::string, std::string>>> SupriousPTPairs;
+
         public :                    
             EvaluateAnalysis(std::string, std::string, int);
             ~EvaluateAnalysis();
@@ -46,6 +49,7 @@ namespace PointsToEval
             bool CheckFSTestCase();
             void EvaluateSoundness();
             void EvalutePrecision();
+            int find_distinct_pointers(std::set<std::pair<std::string, std::string>>&);
     };
 };
 

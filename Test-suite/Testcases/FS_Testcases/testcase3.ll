@@ -5,8 +5,6 @@ target triple = "x86_64-unknown-linux-gnu"
 
 $_Z12MustPointsToIPPiS0_EvT_T0_ = comdat any
 
-$_Z15DoesNotPointsToIPPiS0_EvT_T0_ = comdat any
-
 $_Z11MayPointsToIPPiS0_EvT_T0_ = comdat any
 
 $_Z11MayPointsToIPiiEvT_T0_ = comdat any
@@ -30,199 +28,202 @@ bb:
   %tmp1 = load i32**, i32*** @p, align 8, !dbg !33
   %tmp2 = load i32*, i32** @x, align 8, !dbg !34
   call void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %tmp1, i32* %tmp2), !dbg !35
-  %tmp3 = load i32**, i32*** @p, align 8, !dbg !36
-  %tmp4 = load i32*, i32** @y, align 8, !dbg !37
-  call void @_Z15DoesNotPointsToIPPiS0_EvT_T0_(i32** %tmp3, i32* %tmp4), !dbg !38
-  %tmp5 = load i32**, i32*** @p, align 8, !dbg !39
-  %tmp6 = load i32*, i32** @z, align 8, !dbg !40
-  call void @_Z15DoesNotPointsToIPPiS0_EvT_T0_(i32** %tmp5, i32* %tmp6), !dbg !41
-  br label %bb7, !dbg !42
+  br label %bb3, !dbg !36
 
-bb7:                                              ; preds = %bb46, %bb
-  %tmp8 = load i32, i32* @a, align 4, !dbg !43
-  %tmp9 = icmp sgt i32 %tmp8, 0, !dbg !44
-  br i1 %tmp9, label %bb10, label %bb62, !dbg !42
+bb3:                                              ; preds = %bb32, %bb
+  %tmp4 = load i32, i32* @a, align 4, !dbg !37
+  %tmp5 = icmp sgt i32 %tmp4, 0, !dbg !38
+  br i1 %tmp5, label %bb6, label %bb49, !dbg !36
 
-bb10:                                             ; preds = %bb7
-  %tmp11 = load i32**, i32*** @p, align 8, !dbg !45
-  %tmp12 = load i32*, i32** @x, align 8, !dbg !47
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp11, i32* %tmp12), !dbg !48
-  %tmp13 = load i32**, i32*** @p, align 8, !dbg !49
-  %tmp14 = load i32*, i32** @y, align 8, !dbg !50
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp13, i32* %tmp14), !dbg !51
-  %tmp15 = load i32**, i32*** @p, align 8, !dbg !52
-  %tmp16 = load i32*, i32** @z, align 8, !dbg !53
-  call void @_Z15DoesNotPointsToIPPiS0_EvT_T0_(i32** %tmp15, i32* %tmp16), !dbg !54
-  %tmp17 = load i32**, i32*** @q, align 8, !dbg !55
-  %tmp18 = load i32*, i32** @x, align 8, !dbg !56
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp17, i32* %tmp18), !dbg !57
-  %tmp19 = load i32**, i32*** @p, align 8, !dbg !58
-  store i32* @b, i32** %tmp19, align 8, !dbg !59
-  %tmp20 = load i32*, i32** @x, align 8, !dbg !60
+bb6:                                              ; preds = %bb3
+  %tmp7 = load i32**, i32*** @p, align 8, !dbg !39
+  store i32* @b, i32** %tmp7, align 8, !dbg !41
+  %tmp8 = load i32**, i32*** @p, align 8, !dbg !42
+  %tmp9 = load i32*, i32** @x, align 8, !dbg !43
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp8, i32* %tmp9), !dbg !44
+  %tmp10 = load i32**, i32*** @p, align 8, !dbg !45
+  %tmp11 = load i32*, i32** @y, align 8, !dbg !46
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp10, i32* %tmp11), !dbg !47
+  %tmp12 = load i32**, i32*** @q, align 8, !dbg !48
+  %tmp13 = load i32*, i32** @x, align 8, !dbg !49
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp12, i32* %tmp13), !dbg !50
+  %tmp14 = load i32*, i32** @x, align 8, !dbg !51
+  %tmp15 = load i32, i32* @b, align 4, !dbg !52
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp14, i32 %tmp15), !dbg !53
+  %tmp16 = load i32*, i32** @y, align 8, !dbg !54
+  %tmp17 = load i32, i32* @b, align 4, !dbg !55
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp16, i32 %tmp17), !dbg !56
+  %tmp18 = load i32*, i32** @y, align 8, !dbg !57
+  %tmp19 = load i32, i32* @a, align 4, !dbg !58
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp18, i32 %tmp19), !dbg !59
+  br label %bb20, !dbg !60
+
+bb20:                                             ; preds = %bb23, %bb6
   %tmp21 = load i32, i32* @b, align 4, !dbg !61
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp20, i32 %tmp21), !dbg !62
-  %tmp22 = load i32*, i32** @y, align 8, !dbg !63
-  %tmp23 = load i32, i32* @b, align 4, !dbg !64
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp22, i32 %tmp23), !dbg !65
-  br label %bb24, !dbg !66
+  %tmp22 = icmp sgt i32 %tmp21, 0, !dbg !62
+  br i1 %tmp22, label %bb23, label %bb32, !dbg !60
 
-bb24:                                             ; preds = %bb27, %bb10
-  %tmp25 = load i32, i32* @b, align 4, !dbg !67
-  %tmp26 = icmp sgt i32 %tmp25, 0, !dbg !68
-  br i1 %tmp26, label %bb27, label %bb46, !dbg !66
+bb23:                                             ; preds = %bb20
+  store i32* @b, i32** @x, align 8, !dbg !63
+  %tmp24 = load i32*, i32** @x, align 8, !dbg !65
+  %tmp25 = load i32, i32* @b, align 4, !dbg !66
+  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp24, i32 %tmp25), !dbg !67
+  store i32* @a, i32** @y, align 8, !dbg !68
+  %tmp26 = load i32*, i32** @y, align 8, !dbg !69
+  %tmp27 = load i32, i32* @a, align 4, !dbg !70
+  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp26, i32 %tmp27), !dbg !71
+  store i32** @y, i32*** @q, align 8, !dbg !72
+  %tmp28 = load i32**, i32*** @q, align 8, !dbg !73
+  %tmp29 = load i32*, i32** @y, align 8, !dbg !74
+  call void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %tmp28, i32* %tmp29), !dbg !75
+  %tmp30 = load i32, i32* @b, align 4, !dbg !76
+  %tmp31 = add nsw i32 %tmp30, -1, !dbg !76
+  store i32 %tmp31, i32* @b, align 4, !dbg !76
+  br label %bb20, !dbg !60, !llvm.loop !77
 
-bb27:                                             ; preds = %bb24
-  %tmp28 = load i32**, i32*** @q, align 8, !dbg !69
-  %tmp29 = load i32*, i32** @x, align 8, !dbg !71
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp28, i32* %tmp29), !dbg !72
-  %tmp30 = load i32**, i32*** @q, align 8, !dbg !73
-  %tmp31 = load i32*, i32** @y, align 8, !dbg !74
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp30, i32* %tmp31), !dbg !75
-  %tmp32 = load i32*, i32** @x, align 8, !dbg !76
-  %tmp33 = load i32, i32* @b, align 4, !dbg !77
-  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp32, i32 %tmp33), !dbg !78
-  %tmp34 = load i32*, i32** @y, align 8, !dbg !79
-  %tmp35 = load i32, i32* @a, align 4, !dbg !80
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp34, i32 %tmp35), !dbg !81
-  %tmp36 = load i32*, i32** @y, align 8, !dbg !82
-  %tmp37 = load i32, i32* @b, align 4, !dbg !83
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp36, i32 %tmp37), !dbg !84
-  store i32* @b, i32** @x, align 8, !dbg !85
-  store i32* @a, i32** @y, align 8, !dbg !86
-  store i32** @y, i32*** @q, align 8, !dbg !87
-  %tmp38 = load i32*, i32** @x, align 8, !dbg !88
-  %tmp39 = load i32, i32* @b, align 4, !dbg !89
-  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp38, i32 %tmp39), !dbg !90
-  %tmp40 = load i32*, i32** @y, align 8, !dbg !91
-  %tmp41 = load i32, i32* @a, align 4, !dbg !92
-  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp40, i32 %tmp41), !dbg !93
-  %tmp42 = load i32**, i32*** @q, align 8, !dbg !94
-  %tmp43 = load i32*, i32** @y, align 8, !dbg !95
-  call void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %tmp42, i32* %tmp43), !dbg !96
-  %tmp44 = load i32, i32* @b, align 4, !dbg !97
-  %tmp45 = add nsw i32 %tmp44, -1, !dbg !97
-  store i32 %tmp45, i32* @b, align 4, !dbg !97
-  br label %bb24, !dbg !66, !llvm.loop !98
+bb32:                                             ; preds = %bb20
+  store i32** @y, i32*** @p, align 8, !dbg !79
+  %tmp33 = load i32**, i32*** @p, align 8, !dbg !80
+  %tmp34 = load i32*, i32** @y, align 8, !dbg !81
+  call void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %tmp33, i32* %tmp34), !dbg !82
+  %tmp35 = load i32*, i32** @x, align 8, !dbg !83
+  %tmp36 = load i32, i32* @b, align 4, !dbg !84
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp35, i32 %tmp36), !dbg !85
+  %tmp37 = load i32*, i32** @y, align 8, !dbg !86
+  %tmp38 = load i32, i32* @a, align 4, !dbg !87
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp37, i32 %tmp38), !dbg !88
+  %tmp39 = load i32*, i32** @y, align 8, !dbg !89
+  %tmp40 = load i32, i32* @b, align 4, !dbg !90
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp39, i32 %tmp40), !dbg !91
+  %tmp41 = load i32**, i32*** @q, align 8, !dbg !92
+  %tmp42 = load i32*, i32** @x, align 8, !dbg !93
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp41, i32* %tmp42), !dbg !94
+  %tmp43 = load i32**, i32*** @q, align 8, !dbg !95
+  %tmp44 = load i32*, i32** @y, align 8, !dbg !96
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp43, i32* %tmp44), !dbg !97
+  store i32** @x, i32*** @q, align 8, !dbg !98
+  %tmp45 = load i32**, i32*** @q, align 8, !dbg !99
+  %tmp46 = load i32*, i32** @x, align 8, !dbg !100
+  call void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %tmp45, i32* %tmp46), !dbg !101
+  %tmp47 = load i32, i32* @a, align 4, !dbg !102
+  %tmp48 = add nsw i32 %tmp47, -1, !dbg !102
+  store i32 %tmp48, i32* @a, align 4, !dbg !102
+  br label %bb3, !dbg !36, !llvm.loop !103
 
-bb46:                                             ; preds = %bb24
-  %tmp47 = load i32*, i32** @x, align 8, !dbg !100
-  %tmp48 = load i32, i32* @b, align 4, !dbg !101
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp47, i32 %tmp48), !dbg !102
-  %tmp49 = load i32*, i32** @y, align 8, !dbg !103
-  %tmp50 = load i32, i32* @a, align 4, !dbg !104
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp49, i32 %tmp50), !dbg !105
-  %tmp51 = load i32*, i32** @y, align 8, !dbg !106
-  %tmp52 = load i32, i32* @b, align 4, !dbg !107
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp51, i32 %tmp52), !dbg !108
-  %tmp53 = load i32**, i32*** @q, align 8, !dbg !109
-  %tmp54 = load i32*, i32** @x, align 8, !dbg !110
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp53, i32* %tmp54), !dbg !111
-  %tmp55 = load i32**, i32*** @q, align 8, !dbg !112
-  %tmp56 = load i32*, i32** @y, align 8, !dbg !113
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp55, i32* %tmp56), !dbg !114
-  store i32** @y, i32*** @p, align 8, !dbg !115
-  store i32** @x, i32*** @q, align 8, !dbg !116
-  %tmp57 = load i32**, i32*** @r, align 8, !dbg !117
-  store i32** %tmp57, i32*** @p, align 8, !dbg !118
-  %tmp58 = load i32**, i32*** @q, align 8, !dbg !119
-  %tmp59 = load i32*, i32** @x, align 8, !dbg !120
-  call void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %tmp58, i32* %tmp59), !dbg !121
-  %tmp60 = load i32, i32* @a, align 4, !dbg !122
-  %tmp61 = add nsw i32 %tmp60, -1, !dbg !122
-  store i32 %tmp61, i32* @a, align 4, !dbg !122
-  br label %bb7, !dbg !42, !llvm.loop !123
+bb49:                                             ; preds = %bb3
+  %tmp50 = load i32, i32* @a, align 4, !dbg !105
+  %tmp51 = icmp sgt i32 %tmp50, -1, !dbg !107
+  br i1 %tmp51, label %bb52, label %bb70, !dbg !108
 
-bb62:                                             ; preds = %bb7
-  %tmp63 = load i32, i32* @a, align 4, !dbg !125
-  %tmp64 = icmp sgt i32 %tmp63, -1, !dbg !127
-  br i1 %tmp64, label %bb65, label %bb73, !dbg !128
+bb52:                                             ; preds = %bb49
+  %tmp53 = load i32**, i32*** @p, align 8, !dbg !109
+  store i32* @c, i32** %tmp53, align 8, !dbg !111
+  %tmp54 = load i32**, i32*** @p, align 8, !dbg !112
+  %tmp55 = load i32*, i32** @x, align 8, !dbg !113
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp54, i32* %tmp55), !dbg !114
+  %tmp56 = load i32**, i32*** @p, align 8, !dbg !115
+  %tmp57 = load i32*, i32** @y, align 8, !dbg !116
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp56, i32* %tmp57), !dbg !117
+  %tmp58 = load i32*, i32** @x, align 8, !dbg !118
+  %tmp59 = load i32, i32* @a, align 4, !dbg !119
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp58, i32 %tmp59), !dbg !120
+  %tmp60 = load i32*, i32** @x, align 8, !dbg !121
+  %tmp61 = load i32, i32* @b, align 4, !dbg !122
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp60, i32 %tmp61), !dbg !123
+  %tmp62 = load i32*, i32** @x, align 8, !dbg !124
+  %tmp63 = load i32, i32* @c, align 4, !dbg !125
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp62, i32 %tmp63), !dbg !126
+  %tmp64 = load i32*, i32** @y, align 8, !dbg !127
+  %tmp65 = load i32, i32* @a, align 4, !dbg !128
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp64, i32 %tmp65), !dbg !129
+  %tmp66 = load i32*, i32** @y, align 8, !dbg !130
+  %tmp67 = load i32, i32* @b, align 4, !dbg !131
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp66, i32 %tmp67), !dbg !132
+  %tmp68 = load i32*, i32** @y, align 8, !dbg !133
+  %tmp69 = load i32, i32* @c, align 4, !dbg !134
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp68, i32 %tmp69), !dbg !135
+  br label %bb84, !dbg !136
 
-bb65:                                             ; preds = %bb62
-  %tmp66 = load i32**, i32*** @p, align 8, !dbg !129
-  %tmp67 = load i32*, i32** @x, align 8, !dbg !131
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp66, i32* %tmp67), !dbg !132
-  %tmp68 = load i32**, i32*** @q, align 8, !dbg !133
-  %tmp69 = load i32*, i32** @x, align 8, !dbg !134
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp68, i32* %tmp69), !dbg !135
-  %tmp70 = load i32**, i32*** @q, align 8, !dbg !136
-  %tmp71 = load i32*, i32** %tmp70, align 8, !dbg !137
-  %tmp72 = load i32**, i32*** @p, align 8, !dbg !138
-  store i32* %tmp71, i32** %tmp72, align 8, !dbg !139
-  br label %bb81, !dbg !140
+bb70:                                             ; preds = %bb49
+  %tmp71 = load i32**, i32*** @p, align 8, !dbg !137
+  store i32* @b, i32** %tmp71, align 8, !dbg !139
+  %tmp72 = load i32**, i32*** @p, align 8, !dbg !140
+  %tmp73 = load i32*, i32** @x, align 8, !dbg !141
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp72, i32* %tmp73), !dbg !142
+  %tmp74 = load i32**, i32*** @p, align 8, !dbg !143
+  %tmp75 = load i32*, i32** @y, align 8, !dbg !144
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp74, i32* %tmp75), !dbg !145
+  %tmp76 = load i32*, i32** @x, align 8, !dbg !146
+  %tmp77 = load i32, i32* @a, align 4, !dbg !147
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp76, i32 %tmp77), !dbg !148
+  %tmp78 = load i32*, i32** @x, align 8, !dbg !149
+  %tmp79 = load i32, i32* @b, align 4, !dbg !150
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp78, i32 %tmp79), !dbg !151
+  %tmp80 = load i32*, i32** @y, align 8, !dbg !152
+  %tmp81 = load i32, i32* @a, align 4, !dbg !153
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp80, i32 %tmp81), !dbg !154
+  %tmp82 = load i32*, i32** @y, align 8, !dbg !155
+  %tmp83 = load i32, i32* @b, align 4, !dbg !156
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp82, i32 %tmp83), !dbg !157
+  br label %bb84
 
-bb73:                                             ; preds = %bb62
-  %tmp74 = load i32**, i32*** @p, align 8, !dbg !141
-  %tmp75 = load i32*, i32** @x, align 8, !dbg !143
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp74, i32* %tmp75), !dbg !144
-  %tmp76 = load i32**, i32*** @q, align 8, !dbg !145
-  %tmp77 = load i32*, i32** @x, align 8, !dbg !146
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp76, i32* %tmp77), !dbg !147
-  %tmp78 = load i32**, i32*** @q, align 8, !dbg !148
-  store i32* @a, i32** %tmp78, align 8, !dbg !149
-  %tmp79 = load i32*, i32** @x, align 8, !dbg !150
-  %tmp80 = load i32, i32* @a, align 4, !dbg !151
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp79, i32 %tmp80), !dbg !152
-  br label %bb81
-
-bb81:                                             ; preds = %bb73, %bb65
-  %tmp82 = load i32**, i32*** @p, align 8, !dbg !153
-  %tmp83 = load i32*, i32** @x, align 8, !dbg !154
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp82, i32* %tmp83), !dbg !155
-  %tmp84 = load i32**, i32*** @q, align 8, !dbg !156
-  %tmp85 = load i32*, i32** @x, align 8, !dbg !157
-  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp84, i32* %tmp85), !dbg !158
-  %tmp86 = load i32*, i32** @x, align 8, !dbg !159
-  %tmp87 = load i32, i32* @a, align 4, !dbg !160
-  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp86, i32 %tmp87), !dbg !161
-  store i32* @a, i32** @x, align 8, !dbg !162
-  store i32* @b, i32** @y, align 8, !dbg !163
-  %tmp88 = load i32*, i32** @x, align 8, !dbg !164
-  %tmp89 = load i32, i32* @a, align 4, !dbg !165
-  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp88, i32 %tmp89), !dbg !166
-  %tmp90 = load i32*, i32** @y, align 8, !dbg !167
-  %tmp91 = load i32, i32* @b, align 4, !dbg !168
-  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp90, i32 %tmp91), !dbg !169
-  ret i32 0, !dbg !170
+bb84:                                             ; preds = %bb70, %bb52
+  store i32* @a, i32** @x, align 8, !dbg !158
+  %tmp85 = load i32**, i32*** @p, align 8, !dbg !159
+  %tmp86 = load i32*, i32** @x, align 8, !dbg !160
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp85, i32* %tmp86), !dbg !161
+  %tmp87 = load i32**, i32*** @p, align 8, !dbg !162
+  %tmp88 = load i32*, i32** @y, align 8, !dbg !163
+  call void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %tmp87, i32* %tmp88), !dbg !164
+  %tmp89 = load i32*, i32** @y, align 8, !dbg !165
+  %tmp90 = load i32, i32* @c, align 4, !dbg !166
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp89, i32 %tmp90), !dbg !167
+  %tmp91 = load i32*, i32** @y, align 8, !dbg !168
+  %tmp92 = load i32, i32* @b, align 4, !dbg !169
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp91, i32 %tmp92), !dbg !170
+  %tmp93 = load i32*, i32** @y, align 8, !dbg !171
+  %tmp94 = load i32, i32* @a, align 4, !dbg !172
+  call void @_Z11MayPointsToIPiiEvT_T0_(i32* %tmp93, i32 %tmp94), !dbg !173
+  %tmp95 = load i32*, i32** @x, align 8, !dbg !174
+  %tmp96 = load i32, i32* @a, align 4, !dbg !175
+  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp95, i32 %tmp96), !dbg !176
+  store i32* @b, i32** @y, align 8, !dbg !177
+  %tmp97 = load i32*, i32** @y, align 8, !dbg !178
+  %tmp98 = load i32, i32* @b, align 4, !dbg !179
+  call void @_Z12MustPointsToIPiiEvT_T0_(i32* %tmp97, i32 %tmp98), !dbg !180
+  ret i32 0, !dbg !181
 }
 
 ; Function Attrs: noinline nounwind uwtable
-define linkonce_odr dso_local void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %arg, i32* %arg1) #1 comdat !dbg !171 {
+define linkonce_odr dso_local void @_Z12MustPointsToIPPiS0_EvT_T0_(i32** %arg, i32* %arg1) #1 comdat !dbg !182 {
 bb:
-  call void @llvm.dbg.value(metadata i32** %arg, metadata !178, metadata !DIExpression()), !dbg !179
-  call void @llvm.dbg.value(metadata i32* %arg1, metadata !180, metadata !DIExpression()), !dbg !179
-  ret void, !dbg !181
+  call void @llvm.dbg.value(metadata i32** %arg, metadata !189, metadata !DIExpression()), !dbg !190
+  call void @llvm.dbg.value(metadata i32* %arg1, metadata !191, metadata !DIExpression()), !dbg !190
+  ret void, !dbg !192
 }
 
 ; Function Attrs: noinline nounwind uwtable
-define linkonce_odr dso_local void @_Z15DoesNotPointsToIPPiS0_EvT_T0_(i32** %arg, i32* %arg1) #1 comdat !dbg !182 {
+define linkonce_odr dso_local void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %arg, i32* %arg1) #1 comdat !dbg !193 {
 bb:
-  call void @llvm.dbg.value(metadata i32** %arg, metadata !183, metadata !DIExpression()), !dbg !184
-  call void @llvm.dbg.value(metadata i32* %arg1, metadata !185, metadata !DIExpression()), !dbg !184
-  ret void, !dbg !186
+  call void @llvm.dbg.value(metadata i32** %arg, metadata !194, metadata !DIExpression()), !dbg !195
+  call void @llvm.dbg.value(metadata i32* %arg1, metadata !196, metadata !DIExpression()), !dbg !195
+  ret void, !dbg !197
 }
 
 ; Function Attrs: noinline nounwind uwtable
-define linkonce_odr dso_local void @_Z11MayPointsToIPPiS0_EvT_T0_(i32** %arg, i32* %arg1) #1 comdat !dbg !187 {
+define linkonce_odr dso_local void @_Z11MayPointsToIPiiEvT_T0_(i32* %arg, i32 %arg1) #1 comdat !dbg !198 {
 bb:
-  call void @llvm.dbg.value(metadata i32** %arg, metadata !188, metadata !DIExpression()), !dbg !189
-  call void @llvm.dbg.value(metadata i32* %arg1, metadata !190, metadata !DIExpression()), !dbg !189
-  ret void, !dbg !191
+  call void @llvm.dbg.value(metadata i32* %arg, metadata !204, metadata !DIExpression()), !dbg !205
+  call void @llvm.dbg.value(metadata i32 %arg1, metadata !206, metadata !DIExpression()), !dbg !205
+  ret void, !dbg !207
 }
 
 ; Function Attrs: noinline nounwind uwtable
-define linkonce_odr dso_local void @_Z11MayPointsToIPiiEvT_T0_(i32* %arg, i32 %arg1) #1 comdat !dbg !192 {
+define linkonce_odr dso_local void @_Z12MustPointsToIPiiEvT_T0_(i32* %arg, i32 %arg1) #1 comdat !dbg !208 {
 bb:
-  call void @llvm.dbg.value(metadata i32* %arg, metadata !198, metadata !DIExpression()), !dbg !199
-  call void @llvm.dbg.value(metadata i32 %arg1, metadata !200, metadata !DIExpression()), !dbg !199
-  ret void, !dbg !201
-}
-
-; Function Attrs: noinline nounwind uwtable
-define linkonce_odr dso_local void @_Z12MustPointsToIPiiEvT_T0_(i32* %arg, i32 %arg1) #1 comdat !dbg !202 {
-bb:
-  call void @llvm.dbg.value(metadata i32* %arg, metadata !203, metadata !DIExpression()), !dbg !204
-  call void @llvm.dbg.value(metadata i32 %arg1, metadata !205, metadata !DIExpression()), !dbg !204
-  ret void, !dbg !206
+  call void @llvm.dbg.value(metadata i32* %arg, metadata !209, metadata !DIExpression()), !dbg !210
+  call void @llvm.dbg.value(metadata i32 %arg1, metadata !211, metadata !DIExpression()), !dbg !210
+  ret void, !dbg !212
 }
 
 ; Function Attrs: nounwind readnone speculatable willreturn
@@ -242,7 +243,7 @@ attributes #2 = { nounwind readnone speculatable willreturn }
 !0 = !DIGlobalVariableExpression(var: !1, expr: !DIExpression())
 !1 = distinct !DIGlobalVariable(name: "p", scope: !2, file: !3, line: 4, type: !8, isLocal: false, isDefinition: true)
 !2 = distinct !DICompileUnit(language: DW_LANG_C_plus_plus_14, file: !3, producer: "clang version 10.0.0 ", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !4, globals: !5, splitDebugInlining: false, nameTableKind: None)
-!3 = !DIFile(filename: "testcase3.cpp", directory: "/home/mehul/Desktop/SVF-example/testcases")
+!3 = !DIFile(filename: "testcase3.cpp", directory: "/home/mehul/Desktop/PT-Test-suite/Test-suite/Testcases/FS_Testcases")
 !4 = !{}
 !5 = !{!0, !6, !11, !13, !15, !17, !19, !21, !23}
 !6 = !DIGlobalVariableExpression(var: !7, expr: !DIExpression())
@@ -275,174 +276,180 @@ attributes #2 = { nounwind readnone speculatable willreturn }
 !33 = !DILocation(line: 7, column: 18, scope: !29)
 !34 = !DILocation(line: 7, column: 20, scope: !29)
 !35 = !DILocation(line: 7, column: 5, scope: !29)
-!36 = !DILocation(line: 8, column: 21, scope: !29)
-!37 = !DILocation(line: 8, column: 23, scope: !29)
-!38 = !DILocation(line: 8, column: 5, scope: !29)
-!39 = !DILocation(line: 9, column: 21, scope: !29)
-!40 = !DILocation(line: 9, column: 23, scope: !29)
-!41 = !DILocation(line: 9, column: 5, scope: !29)
-!42 = !DILocation(line: 13, column: 5, scope: !29)
-!43 = !DILocation(line: 13, column: 11, scope: !29)
-!44 = !DILocation(line: 13, column: 13, scope: !29)
-!45 = !DILocation(line: 14, column: 21, scope: !46)
-!46 = distinct !DILexicalBlock(scope: !29, file: !3, line: 13, column: 17)
-!47 = !DILocation(line: 14, column: 23, scope: !46)
-!48 = !DILocation(line: 14, column: 9, scope: !46)
-!49 = !DILocation(line: 15, column: 21, scope: !46)
-!50 = !DILocation(line: 15, column: 23, scope: !46)
-!51 = !DILocation(line: 15, column: 9, scope: !46)
-!52 = !DILocation(line: 16, column: 25, scope: !46)
-!53 = !DILocation(line: 16, column: 27, scope: !46)
-!54 = !DILocation(line: 16, column: 9, scope: !46)
-!55 = !DILocation(line: 17, column: 21, scope: !46)
-!56 = !DILocation(line: 17, column: 23, scope: !46)
-!57 = !DILocation(line: 17, column: 9, scope: !46)
-!58 = !DILocation(line: 19, column: 10, scope: !46)
-!59 = !DILocation(line: 19, column: 12, scope: !46)
-!60 = !DILocation(line: 20, column: 21, scope: !46)
-!61 = !DILocation(line: 20, column: 23, scope: !46)
-!62 = !DILocation(line: 20, column: 9, scope: !46)
-!63 = !DILocation(line: 21, column: 21, scope: !46)
-!64 = !DILocation(line: 21, column: 23, scope: !46)
-!65 = !DILocation(line: 21, column: 9, scope: !46)
-!66 = !DILocation(line: 23, column: 9, scope: !46)
-!67 = !DILocation(line: 23, column: 15, scope: !46)
-!68 = !DILocation(line: 23, column: 17, scope: !46)
-!69 = !DILocation(line: 24, column: 25, scope: !70)
-!70 = distinct !DILexicalBlock(scope: !46, file: !3, line: 23, column: 21)
-!71 = !DILocation(line: 24, column: 27, scope: !70)
-!72 = !DILocation(line: 24, column: 13, scope: !70)
-!73 = !DILocation(line: 25, column: 25, scope: !70)
-!74 = !DILocation(line: 25, column: 27, scope: !70)
-!75 = !DILocation(line: 25, column: 13, scope: !70)
-!76 = !DILocation(line: 26, column: 26, scope: !70)
-!77 = !DILocation(line: 26, column: 28, scope: !70)
-!78 = !DILocation(line: 26, column: 13, scope: !70)
-!79 = !DILocation(line: 27, column: 25, scope: !70)
-!80 = !DILocation(line: 27, column: 27, scope: !70)
-!81 = !DILocation(line: 27, column: 13, scope: !70)
-!82 = !DILocation(line: 28, column: 25, scope: !70)
-!83 = !DILocation(line: 28, column: 27, scope: !70)
-!84 = !DILocation(line: 28, column: 13, scope: !70)
-!85 = !DILocation(line: 30, column: 15, scope: !70)
-!86 = !DILocation(line: 31, column: 15, scope: !70)
-!87 = !DILocation(line: 32, column: 15, scope: !70)
-!88 = !DILocation(line: 34, column: 26, scope: !70)
-!89 = !DILocation(line: 34, column: 28, scope: !70)
-!90 = !DILocation(line: 34, column: 13, scope: !70)
-!91 = !DILocation(line: 35, column: 26, scope: !70)
-!92 = !DILocation(line: 35, column: 28, scope: !70)
-!93 = !DILocation(line: 35, column: 13, scope: !70)
-!94 = !DILocation(line: 36, column: 26, scope: !70)
-!95 = !DILocation(line: 36, column: 28, scope: !70)
-!96 = !DILocation(line: 36, column: 13, scope: !70)
-!97 = !DILocation(line: 38, column: 14, scope: !70)
-!98 = distinct !{!98, !66, !99}
-!99 = !DILocation(line: 39, column: 9, scope: !46)
-!100 = !DILocation(line: 40, column: 21, scope: !46)
-!101 = !DILocation(line: 40, column: 23, scope: !46)
-!102 = !DILocation(line: 40, column: 9, scope: !46)
-!103 = !DILocation(line: 41, column: 21, scope: !46)
-!104 = !DILocation(line: 41, column: 23, scope: !46)
-!105 = !DILocation(line: 41, column: 9, scope: !46)
-!106 = !DILocation(line: 42, column: 21, scope: !46)
-!107 = !DILocation(line: 42, column: 23, scope: !46)
-!108 = !DILocation(line: 42, column: 9, scope: !46)
-!109 = !DILocation(line: 43, column: 21, scope: !46)
-!110 = !DILocation(line: 43, column: 23, scope: !46)
-!111 = !DILocation(line: 43, column: 9, scope: !46)
-!112 = !DILocation(line: 44, column: 21, scope: !46)
-!113 = !DILocation(line: 44, column: 23, scope: !46)
-!114 = !DILocation(line: 44, column: 9, scope: !46)
-!115 = !DILocation(line: 46, column: 11, scope: !46)
-!116 = !DILocation(line: 47, column: 11, scope: !46)
-!117 = !DILocation(line: 48, column: 13, scope: !46)
-!118 = !DILocation(line: 48, column: 11, scope: !46)
-!119 = !DILocation(line: 50, column: 22, scope: !46)
-!120 = !DILocation(line: 50, column: 24, scope: !46)
-!121 = !DILocation(line: 50, column: 9, scope: !46)
-!122 = !DILocation(line: 51, column: 10, scope: !46)
-!123 = distinct !{!123, !42, !124}
-!124 = !DILocation(line: 52, column: 5, scope: !29)
-!125 = !DILocation(line: 54, column: 8, scope: !126)
-!126 = distinct !DILexicalBlock(scope: !29, file: !3, line: 54, column: 8)
-!127 = !DILocation(line: 54, column: 10, scope: !126)
-!128 = !DILocation(line: 54, column: 8, scope: !29)
-!129 = !DILocation(line: 55, column: 21, scope: !130)
-!130 = distinct !DILexicalBlock(scope: !126, file: !3, line: 54, column: 15)
-!131 = !DILocation(line: 55, column: 23, scope: !130)
-!132 = !DILocation(line: 55, column: 9, scope: !130)
-!133 = !DILocation(line: 56, column: 21, scope: !130)
-!134 = !DILocation(line: 56, column: 23, scope: !130)
-!135 = !DILocation(line: 56, column: 9, scope: !130)
-!136 = !DILocation(line: 57, column: 15, scope: !130)
-!137 = !DILocation(line: 57, column: 14, scope: !130)
-!138 = !DILocation(line: 57, column: 10, scope: !130)
-!139 = !DILocation(line: 57, column: 12, scope: !130)
-!140 = !DILocation(line: 59, column: 5, scope: !130)
-!141 = !DILocation(line: 61, column: 21, scope: !142)
-!142 = distinct !DILexicalBlock(scope: !126, file: !3, line: 60, column: 9)
-!143 = !DILocation(line: 61, column: 23, scope: !142)
-!144 = !DILocation(line: 61, column: 9, scope: !142)
-!145 = !DILocation(line: 62, column: 21, scope: !142)
-!146 = !DILocation(line: 62, column: 23, scope: !142)
-!147 = !DILocation(line: 62, column: 9, scope: !142)
-!148 = !DILocation(line: 63, column: 10, scope: !142)
-!149 = !DILocation(line: 63, column: 12, scope: !142)
-!150 = !DILocation(line: 64, column: 21, scope: !142)
-!151 = !DILocation(line: 64, column: 23, scope: !142)
-!152 = !DILocation(line: 64, column: 9, scope: !142)
-!153 = !DILocation(line: 67, column: 17, scope: !29)
-!154 = !DILocation(line: 67, column: 19, scope: !29)
-!155 = !DILocation(line: 67, column: 5, scope: !29)
-!156 = !DILocation(line: 68, column: 17, scope: !29)
-!157 = !DILocation(line: 68, column: 19, scope: !29)
-!158 = !DILocation(line: 68, column: 5, scope: !29)
-!159 = !DILocation(line: 69, column: 17, scope: !29)
-!160 = !DILocation(line: 69, column: 19, scope: !29)
-!161 = !DILocation(line: 69, column: 5, scope: !29)
-!162 = !DILocation(line: 71, column: 7, scope: !29)
-!163 = !DILocation(line: 72, column: 7, scope: !29)
-!164 = !DILocation(line: 73, column: 18, scope: !29)
-!165 = !DILocation(line: 73, column: 20, scope: !29)
-!166 = !DILocation(line: 73, column: 5, scope: !29)
-!167 = !DILocation(line: 74, column: 18, scope: !29)
-!168 = !DILocation(line: 74, column: 20, scope: !29)
-!169 = !DILocation(line: 74, column: 5, scope: !29)
-!170 = !DILocation(line: 76, column: 5, scope: !29)
-!171 = distinct !DISubprogram(name: "MustPointsTo<int **, int *>", linkageName: "_Z12MustPointsToIPPiS0_EvT_T0_", scope: !172, file: !172, line: 6, type: !173, scopeLine: 7, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !175, retainedNodes: !4)
-!172 = !DIFile(filename: "./PointsToCheck.h", directory: "/home/mehul/Desktop/SVF-example/testcases")
-!173 = !DISubroutineType(types: !174)
-!174 = !{null, !8, !9}
-!175 = !{!176, !177}
-!176 = !DITemplateTypeParameter(name: "T", type: !8)
-!177 = !DITemplateTypeParameter(name: "U", type: !9)
-!178 = !DILocalVariable(arg: 1, scope: !171, file: !172, line: 6, type: !8)
-!179 = !DILocation(line: 0, scope: !171)
-!180 = !DILocalVariable(arg: 2, scope: !171, file: !172, line: 6, type: !9)
-!181 = !DILocation(line: 9, column: 1, scope: !171)
-!182 = distinct !DISubprogram(name: "DoesNotPointsTo<int **, int *>", linkageName: "_Z15DoesNotPointsToIPPiS0_EvT_T0_", scope: !172, file: !172, line: 11, type: !173, scopeLine: 12, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !175, retainedNodes: !4)
-!183 = !DILocalVariable(arg: 1, scope: !182, file: !172, line: 11, type: !8)
-!184 = !DILocation(line: 0, scope: !182)
-!185 = !DILocalVariable(arg: 2, scope: !182, file: !172, line: 11, type: !9)
-!186 = !DILocation(line: 14, column: 1, scope: !182)
-!187 = distinct !DISubprogram(name: "MayPointsTo<int **, int *>", linkageName: "_Z11MayPointsToIPPiS0_EvT_T0_", scope: !172, file: !172, line: 16, type: !173, scopeLine: 17, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !175, retainedNodes: !4)
-!188 = !DILocalVariable(arg: 1, scope: !187, file: !172, line: 16, type: !8)
-!189 = !DILocation(line: 0, scope: !187)
-!190 = !DILocalVariable(arg: 2, scope: !187, file: !172, line: 16, type: !9)
-!191 = !DILocation(line: 19, column: 1, scope: !187)
-!192 = distinct !DISubprogram(name: "MayPointsTo<int *, int>", linkageName: "_Z11MayPointsToIPiiEvT_T0_", scope: !172, file: !172, line: 16, type: !193, scopeLine: 17, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !195, retainedNodes: !4)
-!193 = !DISubroutineType(types: !194)
-!194 = !{null, !9, !10}
-!195 = !{!196, !197}
-!196 = !DITemplateTypeParameter(name: "T", type: !9)
-!197 = !DITemplateTypeParameter(name: "U", type: !10)
-!198 = !DILocalVariable(arg: 1, scope: !192, file: !172, line: 16, type: !9)
-!199 = !DILocation(line: 0, scope: !192)
-!200 = !DILocalVariable(arg: 2, scope: !192, file: !172, line: 16, type: !10)
-!201 = !DILocation(line: 19, column: 1, scope: !192)
-!202 = distinct !DISubprogram(name: "MustPointsTo<int *, int>", linkageName: "_Z12MustPointsToIPiiEvT_T0_", scope: !172, file: !172, line: 6, type: !193, scopeLine: 7, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !195, retainedNodes: !4)
-!203 = !DILocalVariable(arg: 1, scope: !202, file: !172, line: 6, type: !9)
-!204 = !DILocation(line: 0, scope: !202)
-!205 = !DILocalVariable(arg: 2, scope: !202, file: !172, line: 6, type: !10)
-!206 = !DILocation(line: 9, column: 1, scope: !202)
+!36 = !DILocation(line: 13, column: 5, scope: !29)
+!37 = !DILocation(line: 13, column: 11, scope: !29)
+!38 = !DILocation(line: 13, column: 13, scope: !29)
+!39 = !DILocation(line: 15, column: 10, scope: !40)
+!40 = distinct !DILexicalBlock(scope: !29, file: !3, line: 13, column: 17)
+!41 = !DILocation(line: 15, column: 12, scope: !40)
+!42 = !DILocation(line: 16, column: 21, scope: !40)
+!43 = !DILocation(line: 16, column: 23, scope: !40)
+!44 = !DILocation(line: 16, column: 9, scope: !40)
+!45 = !DILocation(line: 17, column: 21, scope: !40)
+!46 = !DILocation(line: 17, column: 23, scope: !40)
+!47 = !DILocation(line: 17, column: 9, scope: !40)
+!48 = !DILocation(line: 19, column: 21, scope: !40)
+!49 = !DILocation(line: 19, column: 23, scope: !40)
+!50 = !DILocation(line: 19, column: 9, scope: !40)
+!51 = !DILocation(line: 21, column: 21, scope: !40)
+!52 = !DILocation(line: 21, column: 23, scope: !40)
+!53 = !DILocation(line: 21, column: 9, scope: !40)
+!54 = !DILocation(line: 22, column: 21, scope: !40)
+!55 = !DILocation(line: 22, column: 23, scope: !40)
+!56 = !DILocation(line: 22, column: 9, scope: !40)
+!57 = !DILocation(line: 23, column: 21, scope: !40)
+!58 = !DILocation(line: 23, column: 23, scope: !40)
+!59 = !DILocation(line: 23, column: 9, scope: !40)
+!60 = !DILocation(line: 25, column: 9, scope: !40)
+!61 = !DILocation(line: 25, column: 15, scope: !40)
+!62 = !DILocation(line: 25, column: 17, scope: !40)
+!63 = !DILocation(line: 33, column: 15, scope: !64)
+!64 = distinct !DILexicalBlock(scope: !40, file: !3, line: 25, column: 21)
+!65 = !DILocation(line: 34, column: 26, scope: !64)
+!66 = !DILocation(line: 34, column: 28, scope: !64)
+!67 = !DILocation(line: 34, column: 13, scope: !64)
+!68 = !DILocation(line: 35, column: 15, scope: !64)
+!69 = !DILocation(line: 36, column: 26, scope: !64)
+!70 = !DILocation(line: 36, column: 28, scope: !64)
+!71 = !DILocation(line: 36, column: 13, scope: !64)
+!72 = !DILocation(line: 37, column: 15, scope: !64)
+!73 = !DILocation(line: 38, column: 26, scope: !64)
+!74 = !DILocation(line: 38, column: 28, scope: !64)
+!75 = !DILocation(line: 38, column: 13, scope: !64)
+!76 = !DILocation(line: 41, column: 14, scope: !64)
+!77 = distinct !{!77, !60, !78}
+!78 = !DILocation(line: 42, column: 9, scope: !40)
+!79 = !DILocation(line: 45, column: 11, scope: !40)
+!80 = !DILocation(line: 46, column: 22, scope: !40)
+!81 = !DILocation(line: 46, column: 24, scope: !40)
+!82 = !DILocation(line: 46, column: 9, scope: !40)
+!83 = !DILocation(line: 48, column: 21, scope: !40)
+!84 = !DILocation(line: 48, column: 23, scope: !40)
+!85 = !DILocation(line: 48, column: 9, scope: !40)
+!86 = !DILocation(line: 49, column: 21, scope: !40)
+!87 = !DILocation(line: 49, column: 23, scope: !40)
+!88 = !DILocation(line: 49, column: 9, scope: !40)
+!89 = !DILocation(line: 50, column: 21, scope: !40)
+!90 = !DILocation(line: 50, column: 23, scope: !40)
+!91 = !DILocation(line: 50, column: 9, scope: !40)
+!92 = !DILocation(line: 51, column: 21, scope: !40)
+!93 = !DILocation(line: 51, column: 23, scope: !40)
+!94 = !DILocation(line: 51, column: 9, scope: !40)
+!95 = !DILocation(line: 52, column: 21, scope: !40)
+!96 = !DILocation(line: 52, column: 23, scope: !40)
+!97 = !DILocation(line: 52, column: 9, scope: !40)
+!98 = !DILocation(line: 55, column: 11, scope: !40)
+!99 = !DILocation(line: 56, column: 22, scope: !40)
+!100 = !DILocation(line: 56, column: 24, scope: !40)
+!101 = !DILocation(line: 56, column: 9, scope: !40)
+!102 = !DILocation(line: 59, column: 10, scope: !40)
+!103 = distinct !{!103, !36, !104}
+!104 = !DILocation(line: 60, column: 5, scope: !29)
+!105 = !DILocation(line: 62, column: 8, scope: !106)
+!106 = distinct !DILexicalBlock(scope: !29, file: !3, line: 62, column: 8)
+!107 = !DILocation(line: 62, column: 10, scope: !106)
+!108 = !DILocation(line: 62, column: 8, scope: !29)
+!109 = !DILocation(line: 66, column: 10, scope: !110)
+!110 = distinct !DILexicalBlock(scope: !106, file: !3, line: 62, column: 15)
+!111 = !DILocation(line: 66, column: 12, scope: !110)
+!112 = !DILocation(line: 67, column: 21, scope: !110)
+!113 = !DILocation(line: 67, column: 23, scope: !110)
+!114 = !DILocation(line: 67, column: 9, scope: !110)
+!115 = !DILocation(line: 68, column: 21, scope: !110)
+!116 = !DILocation(line: 68, column: 23, scope: !110)
+!117 = !DILocation(line: 68, column: 9, scope: !110)
+!118 = !DILocation(line: 69, column: 21, scope: !110)
+!119 = !DILocation(line: 69, column: 23, scope: !110)
+!120 = !DILocation(line: 69, column: 9, scope: !110)
+!121 = !DILocation(line: 70, column: 21, scope: !110)
+!122 = !DILocation(line: 70, column: 23, scope: !110)
+!123 = !DILocation(line: 70, column: 9, scope: !110)
+!124 = !DILocation(line: 71, column: 21, scope: !110)
+!125 = !DILocation(line: 71, column: 23, scope: !110)
+!126 = !DILocation(line: 71, column: 9, scope: !110)
+!127 = !DILocation(line: 72, column: 21, scope: !110)
+!128 = !DILocation(line: 72, column: 23, scope: !110)
+!129 = !DILocation(line: 72, column: 9, scope: !110)
+!130 = !DILocation(line: 73, column: 21, scope: !110)
+!131 = !DILocation(line: 73, column: 23, scope: !110)
+!132 = !DILocation(line: 73, column: 9, scope: !110)
+!133 = !DILocation(line: 74, column: 21, scope: !110)
+!134 = !DILocation(line: 74, column: 23, scope: !110)
+!135 = !DILocation(line: 74, column: 9, scope: !110)
+!136 = !DILocation(line: 76, column: 5, scope: !110)
+!137 = !DILocation(line: 81, column: 10, scope: !138)
+!138 = distinct !DILexicalBlock(scope: !106, file: !3, line: 77, column: 9)
+!139 = !DILocation(line: 81, column: 12, scope: !138)
+!140 = !DILocation(line: 82, column: 21, scope: !138)
+!141 = !DILocation(line: 82, column: 23, scope: !138)
+!142 = !DILocation(line: 82, column: 9, scope: !138)
+!143 = !DILocation(line: 83, column: 21, scope: !138)
+!144 = !DILocation(line: 83, column: 23, scope: !138)
+!145 = !DILocation(line: 83, column: 9, scope: !138)
+!146 = !DILocation(line: 84, column: 21, scope: !138)
+!147 = !DILocation(line: 84, column: 23, scope: !138)
+!148 = !DILocation(line: 84, column: 9, scope: !138)
+!149 = !DILocation(line: 85, column: 21, scope: !138)
+!150 = !DILocation(line: 85, column: 23, scope: !138)
+!151 = !DILocation(line: 85, column: 9, scope: !138)
+!152 = !DILocation(line: 86, column: 21, scope: !138)
+!153 = !DILocation(line: 86, column: 23, scope: !138)
+!154 = !DILocation(line: 86, column: 9, scope: !138)
+!155 = !DILocation(line: 87, column: 21, scope: !138)
+!156 = !DILocation(line: 87, column: 23, scope: !138)
+!157 = !DILocation(line: 87, column: 9, scope: !138)
+!158 = !DILocation(line: 95, column: 7, scope: !29)
+!159 = !DILocation(line: 97, column: 17, scope: !29)
+!160 = !DILocation(line: 97, column: 19, scope: !29)
+!161 = !DILocation(line: 97, column: 5, scope: !29)
+!162 = !DILocation(line: 98, column: 17, scope: !29)
+!163 = !DILocation(line: 98, column: 19, scope: !29)
+!164 = !DILocation(line: 98, column: 5, scope: !29)
+!165 = !DILocation(line: 99, column: 17, scope: !29)
+!166 = !DILocation(line: 99, column: 19, scope: !29)
+!167 = !DILocation(line: 99, column: 5, scope: !29)
+!168 = !DILocation(line: 100, column: 17, scope: !29)
+!169 = !DILocation(line: 100, column: 19, scope: !29)
+!170 = !DILocation(line: 100, column: 5, scope: !29)
+!171 = !DILocation(line: 101, column: 17, scope: !29)
+!172 = !DILocation(line: 101, column: 19, scope: !29)
+!173 = !DILocation(line: 101, column: 5, scope: !29)
+!174 = !DILocation(line: 102, column: 18, scope: !29)
+!175 = !DILocation(line: 102, column: 20, scope: !29)
+!176 = !DILocation(line: 102, column: 5, scope: !29)
+!177 = !DILocation(line: 104, column: 7, scope: !29)
+!178 = !DILocation(line: 105, column: 18, scope: !29)
+!179 = !DILocation(line: 105, column: 20, scope: !29)
+!180 = !DILocation(line: 105, column: 5, scope: !29)
+!181 = !DILocation(line: 107, column: 5, scope: !29)
+!182 = distinct !DISubprogram(name: "MustPointsTo<int **, int *>", linkageName: "_Z12MustPointsToIPPiS0_EvT_T0_", scope: !183, file: !183, line: 6, type: !184, scopeLine: 7, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !186, retainedNodes: !4)
+!183 = !DIFile(filename: "./PointsToCheck.h", directory: "/home/mehul/Desktop/PT-Test-suite/Test-suite/Testcases/FS_Testcases")
+!184 = !DISubroutineType(types: !185)
+!185 = !{null, !8, !9}
+!186 = !{!187, !188}
+!187 = !DITemplateTypeParameter(name: "T", type: !8)
+!188 = !DITemplateTypeParameter(name: "U", type: !9)
+!189 = !DILocalVariable(arg: 1, scope: !182, file: !183, line: 6, type: !8)
+!190 = !DILocation(line: 0, scope: !182)
+!191 = !DILocalVariable(arg: 2, scope: !182, file: !183, line: 6, type: !9)
+!192 = !DILocation(line: 9, column: 1, scope: !182)
+!193 = distinct !DISubprogram(name: "MayPointsTo<int **, int *>", linkageName: "_Z11MayPointsToIPPiS0_EvT_T0_", scope: !183, file: !183, line: 16, type: !184, scopeLine: 17, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !186, retainedNodes: !4)
+!194 = !DILocalVariable(arg: 1, scope: !193, file: !183, line: 16, type: !8)
+!195 = !DILocation(line: 0, scope: !193)
+!196 = !DILocalVariable(arg: 2, scope: !193, file: !183, line: 16, type: !9)
+!197 = !DILocation(line: 19, column: 1, scope: !193)
+!198 = distinct !DISubprogram(name: "MayPointsTo<int *, int>", linkageName: "_Z11MayPointsToIPiiEvT_T0_", scope: !183, file: !183, line: 16, type: !199, scopeLine: 17, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !201, retainedNodes: !4)
+!199 = !DISubroutineType(types: !200)
+!200 = !{null, !9, !10}
+!201 = !{!202, !203}
+!202 = !DITemplateTypeParameter(name: "T", type: !9)
+!203 = !DITemplateTypeParameter(name: "U", type: !10)
+!204 = !DILocalVariable(arg: 1, scope: !198, file: !183, line: 16, type: !9)
+!205 = !DILocation(line: 0, scope: !198)
+!206 = !DILocalVariable(arg: 2, scope: !198, file: !183, line: 16, type: !10)
+!207 = !DILocation(line: 19, column: 1, scope: !198)
+!208 = distinct !DISubprogram(name: "MustPointsTo<int *, int>", linkageName: "_Z12MustPointsToIPiiEvT_T0_", scope: !183, file: !183, line: 6, type: !199, scopeLine: 7, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !201, retainedNodes: !4)
+!209 = !DILocalVariable(arg: 1, scope: !208, file: !183, line: 6, type: !9)
+!210 = !DILocation(line: 0, scope: !208)
+!211 = !DILocalVariable(arg: 2, scope: !208, file: !183, line: 6, type: !10)
+!212 = !DILocation(line: 9, column: 1, scope: !208)

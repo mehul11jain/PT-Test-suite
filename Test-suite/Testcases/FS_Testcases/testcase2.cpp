@@ -104,8 +104,7 @@ int main(){
         
 		
 		u--;
-    }
-    //do we need info here?
+    }    
     return 0;
 
 }

@@ -12,6 +12,8 @@
 #include "llvm/IR/Metadata.h"
 #include "nlohmann/json.hpp"
 #include "PointsToDump/FS_PTWriter.h"
+#include <map>
+#include <set>
 
 
 #define RED "\033[1;91m"
@@ -27,9 +29,64 @@ namespace
 	struct RefPass : public ModulePass
 	{
 		static char ID;
+        std::map<long, std::set<llvm::Instruction*>> PPToSetOfInst;
+        std::map<long, long> PtsRelToPP;
 		RefPass() : ModulePass(ID) {}
+        bool hasPointsToCallInst(std::set<Instruction*> Instructions)
+        {
+            for(auto I : Instructions)
+            {
+                if(llvm::isa<CallInst>(I) && dyn_cast<CallInst>(I)->getCalledFunction()->getName().contains("PointsTo"))
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        void Populate_PtsRelToPP()
+        {
+            auto it = PPToSetOfInst.begin();
+            while(it != PPToSetOfInst.end())
+            {
+                if(!hasPointsToCallInst((*it).second))
+                {
+                    int target_PP = (*it).first;
+                    auto i = ++it--;
+                    while(i != PPToSetOfInst.end() && hasPointsToCallInst((*i).second))
+                    {
+                        PtsRelToPP[(*i).first] = target_PP;
+                        i++;
+                    }
+                    it = i;
+                }
+            }
+        }
+        void Populate_PP2SetofInstMap(llvm::Module* M)
+        {
+            for(auto & F : M->functions())
+            {
+                for(auto &BB : F)
+                {
+                    for(auto &I : BB)
+                    {
+                        int lineNo;
+                        if(I.hasMetadata())                        
+                        {
+                            MDNode* node = I.getMetadata("dbg");
+                            if (DILocation *loc = dyn_cast<DILocation>(node))
+                            {
+                                lineNo = loc->getLine();                            
+                            }
+                        }
+                        PPToSetOfInst[lineNo].insert(&I);
+                    }
+                }
+            }
+        }
 		bool runOnModule(Module &M) override
-		{ 
+		{
+            Populate_PP2SetofInstMap(&M);
+            Populate_PtsRelToPP();
             std::string fileName;  
             int lineNo;
             errs() << "Testing\n";
@@ -59,7 +116,7 @@ namespace
                                             fileName = loc->getFilename();
                                         }
                                     }
-                                    pt->WritePointsToinfoAt(&F, lineNo ,fileName, pointer, pointee,PTDump::MustPointee);
+                                    pt->WritePointsToinfoAt(&F, PtsRelToPP[lineNo] ,fileName, pointer, pointee,PTDump::MustPointee);
                                 }
                                 else if(CI->getCalledFunction()->getName().contains("May"))
                                 {
@@ -72,7 +129,7 @@ namespace
                                             fileName = loc->getFilename();
                                         }
                                     }
-                                    pt->WritePointsToinfoAt(&F, lineNo ,fileName, pointer, pointee,PTDump::MayPointee);
+                                    pt->WritePointsToinfoAt(&F, PtsRelToPP[lineNo] ,fileName, pointer, pointee,PTDump::MayPointee);
                                 }
                            }                           
                        }

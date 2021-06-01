@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "PointsToCheck.h"
-int *x, *y, *w, **p, **q, a, b, c;
+int *x, *y, *w, **p, **q, a, b, c, d;
 int main(){
     p = &x;
 	MustPointsTo(p,x);
@@ -36,12 +36,10 @@ int main(){
 //	MayPointsTo(y,a);
 //	MayPointsTo(y,b);
 	
-	*p = w;
-	//cannot say anything about points to info of x. MustAlias(x,w) exists though.
+	*p = &d;	
+    MustPointsTo(x,d);
 	MayPointsTo(y,a);
-	MayPointsTo(y,b);
-	
-	//info from above switch:
+	MayPointsTo(y,b);		
 	MustPointsTo(p,x);
  
 }
