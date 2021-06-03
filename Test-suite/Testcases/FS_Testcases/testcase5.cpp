@@ -11,21 +11,32 @@ int main()
     MustPointsTo(p,x);
     q = &y;
     MustPointsTo(q,y);
+    MustPointsTo(p,x);
     d = 40;
 
     if (b)
     {
         *q = &a;
         MustPointsTo(y,a);
+        MustPointsTo(q,y);
+        MustPointsTo(p,x);
         x = &b;
         MustPointsTo(x,b);
+        MustPointsTo(y,a);
+        MustPointsTo(q,y);
+        MustPointsTo(p,x);
     }
     else
     {
         *p = &a;
-        MustPointsTo(x,a);
+        MustPointsTo(x,a);        
+        MustPointsTo(q,y);
+        MustPointsTo(p,x);
         y = &b;
         MustPointsTo(y,b);
+        MustPointsTo(x,a);        
+        MustPointsTo(q,y);
+        MustPointsTo(p,x);
     }
 // info from exit of if-else block
 //    MayPointsTo(x,a);
@@ -38,6 +49,8 @@ int main()
     MayPointsTo(x,b);
     MayPointsTo(y,a);
     MayPointsTo(y,b);
+    MustPointsTo(q,y);
+    MustPointsTo(p,x);
     
     a = b;
     **p = 30;

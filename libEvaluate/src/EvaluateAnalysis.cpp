@@ -11,6 +11,7 @@ PointsToEval::EvaluateAnalysis::EvaluateAnalysis(std::string ref, std::string us
     input_json_file >> usr_reader;
     ref_json_file >> ref_reader;
     EvaluateSoundness();
+    EvalutePrecision();
 }
 PointsToEval::EvaluateAnalysis::~EvaluateAnalysis()
 {
@@ -146,28 +147,57 @@ void PointsToEval::EvaluateAnalysis::PrintStats()
     }
     std::cout << "\n---------------------------------------------------------------------------------\n";
 
-    std::cout << "Precision Evaluation :\n\n";
-    std::cout << "\t\t=================================================================="
-          "=======================================\n";
-    std::cout << "\t\t|\tProgram Point\t|\t"
-       << "Total Pointers incorrect\t"
-       << "|\tTotal Suprious Pairs\t\t|\n";
-    for (auto i : SupriousPTPairs)
+    if(isSound)
     {
-        if (i == *(SupriousPTPairs.begin()))
+        if(SupriousPTPairs.size() > 0)
         {
-            std::cout << "\t\t=============================================================="
-                  "===========================================\n";
+            std::cout << "Precision Evaluation :\n\n";
+            std::cout << "\t\t=================================================================="
+                "=======================================================\n";
+            std::cout << "\t\t|\t\tProgram Point\t\t|\t"
+            << "Total Pointers incorrect\t"
+            << "|\tTotal Suprious Pairs\t\t|\n";
+            for (auto i : SupriousPTPairs)
+            {
+                if (i == *(SupriousPTPairs.begin()))
+                {
+                    std::cout << "\t\t=============================================================="
+                        "===========================================================\n";
+                }
+                std::cout << "\t\t|\tFile: " << i.first.second << ", Line: " << std::to_string(i.first.first) << std::setw(1)
+                << "   |";
+                std::cout << std::setw(14) << "\t" << std::to_string(find_distinct_pointers(i.second)) << "\t" << std::setw(13)
+                << "\t|\t" << std::setw(14) << i.second.size() << std::setw(13) << "\t|\n";
+                std::cout << "\t\t============================================================================"
+                    "=============================================\n";
+                                 
+            }
+            std::cout << YELLOWT << "\n\nSpurious Points Pairs:\n\n" << RST;
+            std::cout << "==========================================================================================================================================\n";
+            std::cout << "|" << std::setw(30) << "Program Point" << std::setw(18) << "|" <<  std::setw(45) << "Spurious Pairs" << std::setw(44) << "|" << "\n";
+            std::cout << "==========================================================================================================================================\n";
+            for(auto i : SupriousPTPairs)
+            {
+                std::cout << "|" << std::setw(9) << "File: " << std::setw(10) << i.first.second << std::setw(7) << ", Line:" << std::setw(4) << std::to_string(i.first.first) << std::setw(15) << "|";                                
+                std::string rst;
+                for(auto iter : i.second)
+                {                    
+                    if(iter != (*((i.second).begin())))
+                        rst += " ,";
+                    rst +=  "(" +  iter.first + ", " + iter.second + ")";
+                }
+                std::cout << REDT << std::setw(55) << rst << RST << std::setw(35) << "|\n";                
+                std::cout << "==========================================================================================================================================\n";              
+            }
+            std::cout << "______________________________________________________________________"
+                "______________________________________________________\n\n";
         }
-        std::cout << "\t\t|\tFile: " << std::to_string(i.first.first) << ", Line No: \t" << i.first.second << std::setw(1)
-           << "|";
-        std::cout << std::setw(14) << "\t" << std::to_string(find_distinct_pointers(i.second)) << "\t" << std::setw(13)
-           << "\t|\t" << std::setw(14) << i.second.size() << std::setw(13) << "\t|\n";
-        std::cout << "\t\t================================================================"
-              "=========================================\n";
+        else
+        {
+            std::cout << "\n\nPrecision Evaluation: " << GREENT << "No Spurious Points-to pair found..!!!!" << RST << "\n\n\n";
+        }        
     }
-    std::cout << "______________________________________________________________________"
-          "______________________________________________________\n\n";
+    std::cout << "********************************************************************************************************************************\n";
 }
 bool PointsToEval::EvaluateAnalysis::CheckFISTestCase()
 {

@@ -9,28 +9,12 @@
                         "FunctionID": "main",
                         "ProgramPoints": [
                             {
-                                "LineNo": 7,
+                                "LineNo": 6,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "Must",
-                                                "name": "x",
-                                                "type": "i32*"
-                                            }
-                                        ],
-                                        "name": "p",
-                                        "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 14,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
                                                 "name": "x",
                                                 "type": "i32*"
                                             }
@@ -47,18 +31,18 @@
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
                                                 "name": "y",
                                                 "type": "i32*"
                                             }
                                         ],
                                         "name": "p",
                                         "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 17,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
@@ -69,12 +53,7 @@
                                         ],
                                         "name": "q",
                                         "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 20,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
@@ -85,78 +64,14 @@
                                         ],
                                         "name": "x",
                                         "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 21,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "b",
                                                 "type": "i32"
-                                            }
-                                        ],
-                                        "name": "y",
-                                        "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 24,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "x",
-                                                "type": "i32*"
-                                            }
-                                        ],
-                                        "name": "q",
-                                        "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 25,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "y",
-                                                "type": "i32*"
-                                            }
-                                        ],
-                                        "name": "q",
-                                        "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 26,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "Must",
-                                                "name": "b",
-                                                "type": "i32"
-                                            }
-                                        ],
-                                        "name": "x",
-                                        "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 27,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
+                                            },
                                             {
                                                 "PointeeType": "May",
                                                 "name": "a",
@@ -169,23 +84,7 @@
                                 ]
                             },
                             {
-                                "LineNo": 28,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "b",
-                                                "type": "i32"
-                                            }
-                                        ],
-                                        "name": "y",
-                                        "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 34,
+                                "LineNo": 33,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
@@ -197,62 +96,46 @@
                                         ],
                                         "name": "x",
                                         "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 35,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "Must",
-                                                "name": "a",
-                                                "type": "i32"
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
                                             }
                                         ],
-                                        "name": "y",
-                                        "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 36,
-                                "PointsToSet": [
+                                        "name": "p",
+                                        "type": "i32**"
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "Must",
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
                                                 "name": "y",
                                                 "type": "i32*"
                                             }
                                         ],
                                         "name": "q",
                                         "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 40,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "b",
                                                 "type": "i32"
-                                            }
-                                        ],
-                                        "name": "x",
-                                        "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 41,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
+                                            },
                                             {
                                                 "PointeeType": "May",
                                                 "name": "a",
@@ -270,37 +153,48 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
+                                                "PointeeType": "Must",
                                                 "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "Must",
+                                                "name": "a",
                                                 "type": "i32"
                                             }
                                         ],
                                         "name": "y",
                                         "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 43,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "x",
                                                 "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
                                             }
                                         ],
-                                        "name": "q",
+                                        "name": "p",
                                         "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 44,
-                                "PointsToSet": [
+                                    },
                                     {
                                         "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
                                             {
                                                 "PointeeType": "May",
                                                 "name": "y",
@@ -319,55 +213,45 @@
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "Must",
-                                                "name": "x",
+                                                "name": "y",
                                                 "type": "i32*"
                                             }
                                         ],
                                         "name": "q",
                                         "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 55,
-                                "PointsToSet": [
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "Must",
+                                                "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "Must",
+                                                "name": "a",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "y",
+                                        "type": "i32*"
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "x",
                                                 "type": "i32*"
-                                            }
-                                        ],
-                                        "name": "p",
-                                        "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 56,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
+                                            },
                                             {
                                                 "PointeeType": "May",
-                                                "name": "x",
-                                                "type": "i32*"
-                                            }
-                                        ],
-                                        "name": "q",
-                                        "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 61,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "x",
+                                                "name": "y",
                                                 "type": "i32*"
                                             }
                                         ],
@@ -382,51 +266,169 @@
                                     {
                                         "PointeeSet": [
                                             {
-                                                "PointeeType": "May",
-                                                "name": "x",
-                                                "type": "i32*"
-                                            }
-                                        ],
-                                        "name": "q",
-                                        "type": "i32**"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 64,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "a",
-                                                "type": "i32"
-                                            }
-                                        ],
-                                        "name": "x",
-                                        "type": "i32*"
-                                    }
-                                ]
-                            },
-                            {
-                                "LineNo": 67,
-                                "PointsToSet": [
-                                    {
-                                        "PointeeSet": [
-                                            {
-                                                "PointeeType": "May",
-                                                "name": "x",
+                                                "PointeeType": "Must",
+                                                "name": "y",
                                                 "type": "i32*"
                                             }
                                         ],
                                         "name": "p",
                                         "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "a",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "y",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
                                     }
                                 ]
                             },
                             {
-                                "LineNo": 68,
+                                "LineNo": 72,
                                 "PointsToSet": [
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "Must",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "Must",
+                                                "name": "y",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "p",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "a",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "y",
+                                        "type": "i32*"
+                                    }
+                                ]
+                            },
+                            {
+                                "LineNo": 87,
+                                "PointsToSet": [
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "p",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "c",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "a",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "c",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "y",
+                                        "type": "i32*"
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
@@ -441,24 +443,115 @@
                                 ]
                             },
                             {
-                                "LineNo": 69,
+                                "LineNo": 102,
                                 "PointsToSet": [
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "p",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
+                                        "type": "i32*"
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
                                                 "PointeeType": "May",
                                                 "name": "a",
                                                 "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
                                             }
                                         ],
-                                        "name": "x",
+                                        "name": "y",
                                         "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
                                     }
                                 ]
                             },
                             {
-                                "LineNo": 73,
+                                "LineNo": 116,
                                 "PointsToSet": [
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "p",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "c",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "b",
+                                                "type": "i32"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "a",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "y",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
+                                    },
                                     {
                                         "PointeeSet": [
                                             {
@@ -473,7 +566,7 @@
                                 ]
                             },
                             {
-                                "LineNo": 74,
+                                "LineNo": 126,
                                 "PointsToSet": [
                                     {
                                         "PointeeSet": [
@@ -484,6 +577,44 @@
                                             }
                                         ],
                                         "name": "y",
+                                        "type": "i32*"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "q",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "x",
+                                                "type": "i32*"
+                                            },
+                                            {
+                                                "PointeeType": "May",
+                                                "name": "y",
+                                                "type": "i32*"
+                                            }
+                                        ],
+                                        "name": "p",
+                                        "type": "i32**"
+                                    },
+                                    {
+                                        "PointeeSet": [
+                                            {
+                                                "PointeeType": "Must",
+                                                "name": "a",
+                                                "type": "i32"
+                                            }
+                                        ],
+                                        "name": "x",
                                         "type": "i32*"
                                     }
                                 ]

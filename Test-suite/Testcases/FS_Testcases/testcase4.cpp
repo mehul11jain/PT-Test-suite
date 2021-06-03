@@ -5,6 +5,7 @@ int main(){
     p = &x;
 	MustPointsTo(p,x);
 	x = &a;
+    MustPointsTo(p,x);
 	MustPointsTo(x,a);
 
 
@@ -12,20 +13,26 @@ int main(){
 		case 1:
 			x = &b;
 			MustPointsTo(x,b);
+            MustPointsTo(p,x);
 			break;
 		case 2:
 			x = &c;
 			MustPointsTo(x,c);
+            MustPointsTo(p,x);
 			break;
 		case 3:
 			y = &a;
 			MustPointsTo(y,a);
+            MustPointsTo(x,a);
+            MustPointsTo(p,x);
 			break;
 		case 5:
 			break;
 		default :
 			y = &b;
 			MustPointsTo(y,b);
+            MustPointsTo(x,a);
+            MustPointsTo(p,x);
 			break;
 	}
 	// info available at the exit of above switch:

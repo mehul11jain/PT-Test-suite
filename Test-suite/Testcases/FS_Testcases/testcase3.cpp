@@ -32,10 +32,27 @@ int main(){
 
             x = &b;
             MustPointsTo(x,b);
+            MayPointsTo(p,x);
+            MayPointsTo(p,y);            
+            MayPointsTo(q,x);
+            MayPointsTo(q,y);                        
+            MayPointsTo(y,b);
+            MayPointsTo(y,a);
+
             y = &a;
+            MustPointsTo(x,b);
             MustPointsTo(y,a);
+            MayPointsTo(p,x);
+            MayPointsTo(p,y);            
+            MayPointsTo(q,x);
+            MayPointsTo(q,y);                                    
+
             q = &y;
             MustPointsTo(q,y);
+            MustPointsTo(x,b);
+            MustPointsTo(y,a);
+            MayPointsTo(p,x);
+            MayPointsTo(p,y);                                                            
 
 
             b--;
@@ -53,7 +70,11 @@ int main(){
         
         
         q = &x;
-        MustPointsTo(q,x);        
+        MustPointsTo(q,x); 
+        MustPointsTo(p,y);		
+        MayPointsTo(x,b);
+        MayPointsTo(y,a);
+        MayPointsTo(y,b);       
 		//r points to nothing here!
 
         a--;
@@ -65,13 +86,13 @@ int main(){
 		//        MayPointsTo(q,x);
         *p = &c;
         MayPointsTo(p,x);
-        MayPointsTo(p,y);
-        MayPointsTo(x,a);
+        MayPointsTo(p,y);        
         MayPointsTo(x,b);
         MayPointsTo(x,c);        
         MayPointsTo(y,a);
         MayPointsTo(y,b);
-        MayPointsTo(y,c);                
+        MayPointsTo(y,c);
+        MayPointsTo(q,x);                
 
     }   
     else{
@@ -80,10 +101,10 @@ int main(){
 		//        MayPointsTo(q,x);
         *p = &b;
         MayPointsTo(p,x);
-        MayPointsTo(p,y);        
-        MayPointsTo(x,a);        
+        MayPointsTo(p,y);                        
         MayPointsTo(x,b);
         MayPointsTo(y,a);
+        MayPointsTo(q,x);
         MayPointsTo(y,b);
     }
 
@@ -97,12 +118,17 @@ int main(){
     MayPointsTo(p,x);
     MayPointsTo(p,y);    
     MayPointsTo(y,c);
+    MayPointsTo(q,x);
     MayPointsTo(y,b);
     MayPointsTo(y,a);
     MustPointsTo(x,a);
     
     y = &b;
     MustPointsTo(y,b);
+    MayPointsTo(q,x);
+    MayPointsTo(p,x);
+    MayPointsTo(p,y);
+    MustPointsTo(x,a);
 
     return 0;
 }

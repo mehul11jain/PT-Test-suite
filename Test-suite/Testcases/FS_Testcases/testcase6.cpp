@@ -13,15 +13,24 @@ int main()
         MayPointsTo(q,b);
         MayPointsTo(q,a);
         //info from the statement r=&a
-        MustPointsTo(r,a);
-
-        *q = &m;
+        MustPointsTo(r,a);        
         MayPointsTo(b,m);
         MayPointsTo(a,m);
+
+        *q = &m;
+        MayPointsTo(q,b);
+        MayPointsTo(q,a);
+        MustPointsTo(r,a);
+        MayPointsTo(b,m);
+        MayPointsTo(a,m);
+
         if (m)
         {
             q = &b;
             MustPointsTo(q,b);
+            MustPointsTo(r,a);
+            MayPointsTo(b,m);
+            MayPointsTo(a,m);
         }
         else
         {
@@ -51,4 +60,8 @@ int main()
 	   
     q = &e;
     MustPointsTo(q,e);
+    MayPointsTo(a,m);
+    MayPointsTo(b,m);
+    MustPointsTo(e,m);
+    MustPointsTo(r,a);
 }
